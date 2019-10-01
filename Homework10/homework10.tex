@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{../csci-246-fall2018/hw/template/fasy-hw}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{hyperref}
+
+\author{Nathan Stouffer}
+\problem{1-1}
+% \problem{A-B} means Problem Set A, Problem B.
+\collab{none}
+% or give names, e.g., \collab{Alyssa P. Hacker and A. Student}
+
+\begin{document}
+
+\section*{Section 9.2, Problem 17}
+
+\begin{enumerate}[a.]
+	\item Let $n_i$ be the number integers from $1000$ to $9999$. The first digit has nine options (integers 1 through 9), and the remaining three have ten options (integers 0 through 9). $n_i=9*10*10*10=9000$
+	\item Let $n_o$ be the number of integers from $1000$ to $9999$ that are odd. The first digit has nine options (integers 1 through 9) and the middle two have ten options (integers 0 through 9). The final digit must be in the set $A=\{1,3,5,7,9\}$ to make the integer even, the size of $A$ is $5$, therefore, the last digit has 5 options. $n_o=9*10*10*5=4500$
+	\item Let $n_d$ be the number of integers from $1000$ to $9999$ that are distinct. The first digit has nine options (integers 1 through 9) and the second digit also has nine options (integers 0 through 9 excluding the first choice). Each subsequent digit has one less option than the digit before it. $n_d=9*9*(9-1)*(9-2)=9*9*8*7=4536$
+	\item Let $n_b$ be the number of integers from $1000$ to $9999$ that are both odd and distinct. To be odd, the final digit of a number must be odd. Let $A=\{1,3,5,7,9\}$ be the set of odd digits. We will now find the amount of distinct 4-digit numbers that can be created given we have selected a final digit. Given an arbitrary final digit in the set $A$, there are 8 options for the first digit (integers 1-9 excluding final digit), the second digit also has 8 options (integers 0-9 excluding the first digit and the final digit), and the third digit has 7 options (integers 0-9 excluding the first and second digits as well as the final digit). Because an arbitrary final digit was chosen, this product can be multiplied by the magnitude of $A$ to find $n_b$. $n_b=8*8*7*|A|=8*8*7*5=2240$.
+	\item $P(\text{A random 4-digit integer has distinct digits})=\dfrac{\text{number of 4-digit integers with distinct digits}}{\text{number of 4 digit integers}}=\dfrac{4536}{9000}=0.504$ \\
+	$P(\text{A random 4-digit integer has distinct digits and is odd})=\dfrac{\text{number of odd 4-digit integers with distinct digits}}{\text{number of 4 digit integers}}=\dfrac{2240}{9000}=0.2488$
+\end{enumerate}
+
+\problem{1-2}
+\collab{none}
+\clearpage
+\header
+
+\end{document}
+

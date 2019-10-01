@@ -1,0 +1,197 @@
+\documentclass{article}
+\usepackage{../csci-246-fall2018/hw/template/fasy-hw}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+\author{Nathan Stouffer}
+\problem{1-1}
+% \problem{A-B} means Problem Set A, Problem B.
+\collab{Kevin Browder}
+% or give names, e.g., \collab{Alyssa P. Hacker and A. Student}
+
+\begin{document}
+
+\section*{Section 3.1, Problem 29}
+\underline{Definitions} \\
+Rectangle: a plane figure with four straight sides and four right angles. \\
+Square: a plane figure with four equal straight sides and four right angles.
+\begin{enumerate}[(a)]
+	\item Original statement: $\exists x$ $s.t.$ Rect$(x)$ $\wedge$ Square$(x)$ \\\\
+	Rewritten statement: There is a geometric figure that is both a square and a rectangle. \\\\
+	This statement is true because, by the definitions of a square and a rectangle, the following shape is a square and a rectangle with side lengths $\ell$. \\
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (-1, 0) -| (1, -2)
+			node[pos=0.25, above] {$\ell$}
+			node[pos=0.75, right] {$\ell$}
+			-| (-1, 0);
+		\end{tikzpicture}
+	\end{center}
+	
+	\item Original statement: $\exists x$ $s.t.$ Rect$(x)$ $\wedge$ $\sim$Square$(x)$ \\\\
+	Rewritten statement: There is a geometric figure that is both a rectangle and not a square. \\\\
+	This statement is true because, by the definitions of a square and a rectangle, the following shape is a rectangle but not a square. It has side lengths $\ell$ and $w$. \\
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (-2, 0) -| (2,-2)
+			node[pos=0.25, above] {$\ell$}
+			node[pos=0.75, right] {$w$}
+			-| (-2,0);
+		\end{tikzpicture}
+	\end{center}
+
+	\item Original statement: $\forall x,$ Square$(x) \implies$ Rect$(x)$ \\\\
+	Rewritten statement: Every square is a rectangle. \\\\
+	This statement is true because the definition of a square satisfies the definition of a rectangle.
+	
+\end{enumerate}
+
+\problem{1-2}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+\section*{Section 3.2, Problem 28}
+Claim: All occurrences of the letter $u$ in $Discrete$ $Mathematics$ are lowercase. \\\\
+Equivalent Statement: If a letter in the phrase $Discrete$ $Mathematics$ is a $u$, then it is lowercase.
+Background: Truth table
+\begin{center}
+	\begin{tabular}{|c c c|} 
+		\hline
+		capital U & Claim & Equivalent Statement \\ [1ex] 
+		\hline
+		T & F & F \\
+		\hline
+		F & T & T \\
+		\hline
+	\end{tabular}
+\end{center}
+Proof: An equivalent statement to the claim is as follows: if a letter in the phrase $Discrete$ $Mathematics$ is a $u$, then it is lowercase. This phrase is true for every letter in $Discrete$ $Mathematics$. \\
+Therefore, all occurrences of the letter $u$ in $Discrete$ $Mathematics$ are lowercase.
+
+\problem{1-3}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+\section*{Section 3.2, Problem 47}
+Original statement: The absence of error messages during translation of a computer program is only a necessary and not a sufficient condition for reasonable [program] correctness. \\\\
+Rewritten statement: The absence of error messages during translation of a computer program is required, but does not prove reasonable [program] correctness.
+
+\problem{1-4}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+\section*{Section 3.4, Problem 34}
+\begin{enumerate}[1.]
+	\item If a writer understands human nature, then they are clever.
+	\item If a person cannot stir the human heart, then they are not a true poet.
+	\item If a person is Shakespeare, that person wrote Hamlet.
+	\item If a writer does not understand human nature, then that writer cannot stir the human heart.
+	\item If a person is not a true poet, then that person did not write Hamlet.
+\end{enumerate}
+
+\problem{1-5}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+Question: Is Big-O notation an equivalence relation? \\\\
+Claim: Big-O notation is reflexive and transitive but not symmetric. Therefore, it is not an equivalence relation. \\\\
+\underline{Definitions} \\
+Big-O notation: For arbitrary functions $f(x)$ and $g(x)$, $f(x)$ is $O(g(x))$ if $\exists c,n_o$ $s.t.$ $f(x) \leq c*g(x)$ \\\\
+	An equivalence relation must be reflexive, symmetric, and transitive. This is evaluated for Big-O notation in the following points. Let Big-O notation be represented by the relation $O$.
+	\begin{enumerate}[(a)]
+		\item Sub-claim: $O$ is reflexive. \\
+			A relation is reflexive if $f(x)$ $O$ $f(x)$. \\
+			Proof: If $\exists c,n_o$ $s.t.$ $f(x) \leq c*f(x) \implies f(x)$ is $O(f(x))$. \\
+			Let $c=1$ and $n_o=1$, then the statement reads: $\forall x>1,$ $f(x) \leq 1*f(x) \implies f(x)$ is $O(f(x))$. The left side of the relation must be true because $f(x)=f(x)$. \\
+			Therefore, $O$ is reflexive.
+		\item Sub-claim: $O$ is not symmetric. \\
+			A relation is symmetric if $f(x)$ $O$ $g(x)$ and $g(x)$ $O$ $f(x)$. \\
+			Proof: We will find functions $f$ and $g$ that make $O$ not symmetric. \\
+			Let $f(x)=x$ and $g(x)=x^2$. \\
+			Then $f$ is $O(g)$ by letting $c=1$ and $n_o=2$. Then the statement would read $\forall x>2,$ $x \leq 1*x^2 \implies x$ is $O(x^2)$. The left side of the relation must be true because $x^2$ grows faster than $x$ and letting $x=1$ means that $f(2)=2 \leq g(2)=2^2=4$. \\
+			However, $g(x) \neq O(f(x))$ because $g(x)=x*f(x)$. But, if $g=O(f)$, then $g \leq c*f$. Regardless of what $c$ is chosen, $x$ will always be larger at some point. \\
+			Therefore, $O$ is not symmetric.
+		\item Sub-claim: $O$ is transitive. \\
+			A relation is transitive if $f$ $O$ $g$ and $g$ $O$ $h$, then $f$ $O$ $h$. \\
+			Proof: Given that $f \leq g$ and $g \leq h$, it follows that $f \leq h$. \\
+			Therefore, $O$ is transitive.
+	\end{enumerate}
+	Therefore, Big-O notation is not an equivalence relation. Q.E.D.
+
+\problem{1-6}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+\underline{Definitions} \\
+Big-O notation: $f=O(g)$ if $\exists c,n_o$ $s.t.$ $\forall x>n_o,$ $f(x) \leq c*g(x)$.
+
+\begin{enumerate}[(A)]
+	\item Statement: The function $f(x)=2x^2=O(4x)$. \\\\
+		Claim: $2x^2 \neq O(4x)$. \\\\
+		\begin{proof}
+			For $2x^2=O(4x)$, $2x^2 \leq c*4x \iff \dfrac{x}{2} \leq c$. \\
+			There is no $c$ for which this statement can be true for $x>n_o$. \\
+			Therefore, $2x^2 \neq O(4x)$.
+		\end{proof}
+	\item Statement: The function $g(x)=3x=\Omega (x)$. \\\\
+		Background: If $f=O(g)$, then $g=\Omega (f)$. \\\\
+		Claim: $3x=\Omega (x)$. \\\\
+		\begin{proof}
+			If $x=O(3x)$, then $3x=\Omega (x)$. \\
+			$x=O(3x)$ if $\exists c,n_o$ $s.t.$ $x \leq c*3x$ \\
+			Then $x \leq c*3x \iff 1 \leq c*3 \iff c \geq \dfrac{1}{3}$. \\
+			Let $c=\dfrac{1}{3}$ and $n_o = 1$, then $x=O(3x)$ because $x \leq \dfrac{1}{3} *3x=x$ for $x>n_o$\\
+			Therefore, $3x=\Omega (x)$.
+		\end{proof}
+	\item Statement: The function $h(x)=x^2 + log(x)=O(x^2)$. \\\\
+		Claim: $h(x)=x^2 + \log(x)=O(x^2)$. \\\\
+		\begin{proof}
+			We must find a $c$ such that the following is true: $x^2 + \log(x) \leq c*x^2$. \\
+			$x^2 + \log(x) \leq x^2 + x^2 = 2x^2$. \\
+			Let $c=2$ and $n_o=1$, then the statement reads $x^2 + \log(x) \leq 2*x^2$. \\
+			Therefore, $x^2 + \log(x)=O(x^2)$.
+		\end{proof}
+	\item Statement: The function $k(x)=5x^2 + x=\Theta (x)$. \\\\
+		Background: $f=\Theta (g)$ if $\exists c,n_o >0$ $s.t.$ $\dfrac{1}{c} * g \leq f \leq c*g$. \\\\
+		Claim: $5x^2 + x \neq \Theta (x)$ \\\\
+		\begin{proof}
+			$5x^2 + x = \Theta (x)$ if $5x^2 + x \leq x$ \\
+			$5x^2 +x \leq 5x^2 + x*x = 5x^2 + x^2 = 6x^2 \nleq c*x$ \\
+			Therefore, $5x^2 + x \neq \Theta (x)$.
+		\end{proof}
+\end{enumerate}
+
+\problem{1-7}
+\collab{Kevin Browder}
+\clearpage
+\header
+
+\begin{enumerate}[(A)]
+	\item Utah and New Mexico can have the same color despite sharing a vertex because they do not share a border.
+	\item Michigan does not satisfy the conditions for the four color theorem because it is a divided country.
+	\item We omit Alaska and Hawaii when constructing a four color map of the US because they do not share borders with any other states.
+	\item The following statement is false: Four colors are necessary to color all maps.
+\end{enumerate}
+
+\problem{1-8}
+\collab{none}
+\clearpage
+\header
+
+\section*{Charles Babbage and Computer Science}
+
+References to online resources are provided as footnotes. \\
+
+Charles Babbage was a British mathematician in the 1800s who is famous for inventing a calculating machine and is credited as the father of the digital computer. According to the Encyclopedia Britannica, Babbage gave "is credited with having conceived the first automatic digital computer."
+\footnote{\url{https://www.britannica.com/biography/Charles-Babbage}}
+Babbage's ideas are the foundation of the computing machines we use today.
+
+\end{document}
+

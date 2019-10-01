@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage{../csci-246-fall2018/hw/template/fasy-hw}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{hyperref}
+
+\author{Nathan Stouffer}
+\problem{1-1}
+% \problem{A-B} means Problem Set A, Problem B.
+\collab{Kevin Browder}
+% or give names, e.g., \collab{Alyssa P. Hacker and A. Student}
+
+\begin{document}
+
+\section*{Section 8.1, Problem 20}
+Let $A=\{-1,1,2,4\}$ and $B=\{1,2\}$. For all $(x,y)\in A \times B$:
+\begin{center}
+	$x$ $R$ $y\iff |x|=|y|$ and \\
+	$x$ $S$ $y\iff x-y$ is even
+\end{center}
+The sets $A \times B$, $R$, $S$, $R \cup S$, and $R \cap S$ are defined as: \\\\
+$A \times B: \{(-1,1), (-1,2), (1,1), (1,2), (2,1), (2,2), (4,1), (4,2)\}$ \\
+$R: \{(-1,1), (1,1), (2,2)\}$ \\
+$S: \{(-1,1),(1,1),(2,2),(4,2)\}$ \\
+$R \cup S: \{(-1,1),(1,1),(2,2),(4,2)\}$ \\
+$R \cap S: \{(-1,1),(1,1),(2,2)\}$
+
+\problem{1-2}
+\collab{Kevin Browder}
+\clearpage
+\header
+\section*{Section 8.2, Problem 21}
+Let $x=\{a,b,c\}$. The power set of $x$, $P(x)$, is $P(x)=\{\emptyset, \{a\}, \{b\}, \{c\}, \{a,b\}, \{a,c\}, \{b,c\}, \{a,b,c\} \}$. For all sets $A,B\in P(x)$, the relation $L$ is defined as: $A$ $L$ $B\iff n_a < n_b$ where $n_k$ represents the number of elements in a set $K$.
+
+Claim: The relation $L$ is transitive but not reflexive and not symmetric.
+
+\begin{enumerate}
+	\item $L$ is reflexive if and only if $\forall n_a \in P(x)$: $n_a$ $L$ $n_a$. $n_a<n_a$ is never true because $n_a$ is an integer and an integer has only one value. Therefore, it cannot be less than itself and $L$ is not reflexive.
+	\item $L$ is symmetric if and only if $\forall n_a, n_b \in P(x)$: $n_a$ $L$ $n_b$ and $n_b$ $L$ $n_a$. If $n_a$ $L$ $n_b$ and $n_b$ $L$ $n_a$ is true, then $n_a<n_b$ and $n_b<n_a$. Because $n_a$ and $n_b$ are both integers, only one of $n_a<n_b$ and $n_b<n_a$ can be true. Therefore, $L$ is not reflexive.
+	\item $L$ is transitive if and only if $\forall n_a,n_b,n_c \in P(x)$: if $n_a$ $L$ $n_b$ and $n_b$ $L$ $n_c$, then $n_a$ $L$ $n_c$. Using the definition of $L$,  $n_a$ $L$ $n_b \iff n_a < n_b$ and $n_b$ $L$ $n_c \iff n_b < n_c$, which then means that $n_a < n_b < n_c$ and it follows that $n_a < n_c \iff n_a$ $L$ $n_c$. Therefore, $L$ is transitive.
+\end{enumerate}
+Therefore, L is transitive but not reflexive and not symmetric.
+
+
+
+\problem{1-3}
+\collab{Kevin Browder}
+\clearpage
+\header
+\section*{Section 8.3, Problem 23}
+For all $m,n \in \mathbb{Z}$, $m$ $R$ $n \iff 4 \mid (m^2 - n^2)$
+\begin{enumerate}[(a)]
+	\item Claim: The relation $R$ is an equivalence relation if and only if it is reflexive, symmetric, and transitive.
+		\begin{enumerate}[1.]
+			\item $R$ is reflexive if and only if $\forall m$: $m$ $R$ $m$. $m$ $R$ $m \iff 4\mid (m^2 - m^2) \implies 4\mid 0 \implies 0$. Therefore, $R$ is reflexive.
+			\item $R$ is symmetric if and only if $\forall m,n$: $m$ $R$ $n$ and $n$ $R$ $m$. $m$ $R$ $n \iff 4\mid (m^2-n^2) \implies 4\mid -1*(n^2-m^2) \implies 4\mid (n^2-m^2) \iff n$ $R$ $m$. Therefore, $R$ is symmetric.
+			\item $R$ is transitive if and only if $\forall m,n,p \in \mathbb{Z}$: $m$ $R$ $n$ and $n$ $R$ $p$, then $m$ $R$ $p$. $(m$ $R$ $n) + (n$ $R$ $p) \iff (4\mid (m^2 - n^2)) + (4\mid (n^2 - p^2)) \implies \dfrac{m^2 - n^2}{4} + \dfrac{n^2 - p^2}{4} \implies \dfrac{m^2-\cancel{n^2}+\cancel{n^2}-p^2}{4} \implies \dfrac{m^2-p^2}{4} \implies 4\mid (m^2 - p^2) \iff m$ $R$ $p$. Therefore, $R$ is transitive.
+		\end{enumerate}
+	\item $m$ $R$ $n$ has distinct equivalence classes. If $a,b\in \mathbb{Z}$ and $c\in\{0,1,2,3\}$, then $a$ can be distinctly written as $4b+c$: $4b$, $4b+1$, $4b+2$, or $4b+3$. 
+\end{enumerate}
+
+\problem{1-4}
+\collab{Kevin Browder}
+\clearpage
+\header
+\section*{Section 2.1, Problem 20}
+Claim: $p\lor q \neq p \wedge q$
+\begin{center}
+	\begin{tabular}{|c c c|} 
+		\hline
+		$p$ $q$ & $p\lor q$ & $p \wedge q$ \\ [1ex] 
+		\hline
+		T T & T & T \\
+		\hline
+		T F & T & F \\
+		\hline
+		F T & T & F \\
+		\hline
+		F F & F & F \\ 
+		\hline
+	\end{tabular}
+\end{center}
+The truth tables for $p\lor q$ and $p \wedge q$ are different, therefore $p\lor q \neq p \wedge q$.
+
+\section*{Section 2.1, Problem 22}
+Claim: $p \wedge (q \lor r) = (p \wedge q) \lor (p \wedge r)$
+\begin{center}
+	\begin{tabular}{|c c c|} 
+		\hline
+		$p$ $q$ $r$ & $p \wedge (q \lor r)$ & $(p \wedge q) \lor (p \wedge r)$ \\ [1ex] 
+		\hline
+		T T T & T & T \\ 
+		\hline
+		T T F & T & T \\
+		\hline
+		T F T & T & T \\
+		\hline
+		F T T & F & F \\ 
+		\hline
+		T F F & F & F \\
+		\hline
+		F T F & F & F \\
+		\hline
+		F F T & F & F \\
+		\hline
+		F F F & F & F \\
+		\hline
+	\end{tabular}
+\end{center}
+The truth tables for $p \wedge (q \lor r)$ and $(p \wedge q) \lor (p \wedge r)$ are the same, therefore $p \wedge (q \lor r) = (p \wedge q) \lor (p \wedge r)$.
+
+\problem{1-5}
+\collab{Kevin Browder}
+\clearpage
+\header
+\section*{Section 2.3, Problem 40}
+Assumptions:
+\begin{enumerate}
+	\item Sharky was killed by one of his henchmen (Socko, Fats, Left, and Muscles)
+	\item Only one of the following statements is true:
+		\begin{enumerate}[(a)]
+			\item Socko: Lefty killed Sharky
+			\item Fats: Muscles didn't kill Sharky
+			\item Lefty: Muscles was shooting craps with Socko when Sharky was knocked off
+			\item Muscles: Lefty didn't kill Sharky
+		\end{enumerate}
+\end{enumerate}
+Notice:
+\begin{enumerate}
+	\item Either Socko or Muscles must be telling the truth because their statements contradict each other.
+	\item Fats and Lefty are lying because there is only one truthful statement.
+	\item Fats lied when he said that Muscles didn't kill Sharky.
+\end{enumerate}
+Therefore, Muscles killed Sharky.
+
+\problem{1-6}
+\collab{Kevin Browder}
+\clearpage
+\header
+\section*{Section 4.5, Problem 29}
+Claim: For $a,b,c\in \mathbb{Z}$, if $a\mid b$ and $a\nmid c$, then $a\nmid (b+c)$.
+\begin{enumerate}[(a)]
+	\item Proof by Contraposition:
+		\begin{center}
+			\begin{align*}
+				a\mid b \wedge a\nmid c &\implies a\nmid (b+c) \\
+				\neg (a \nmid (b+c)) &\implies \neg (a\mid b \wedge a\nmid c) \\
+				a\mid (b+c) &\implies a\nmid b \lor a\mid c \\
+				a\mid (b+c) \wedge a\mid b &\implies a\mid c
+			\end{align*}
+		\end{center}
+	$a\mid c$ is false because the Claim states that $a\nmid c$, therefore, if $a\mid b$ and $a\nmid c$, then $a\nmid (b+c)$.
+	\item Proof by Contradiction: Assume the following statement is true:
+		\begin{center}
+			If $a\mid b$ and $b\nmid c$, then $a\mid (b+c)$
+		\end{center}
+	Manipulating $a\mid (b+c)$: $a\mid (b+c) \implies \dfrac{b+c}{a} \implies \dfrac{b}{a} + \dfrac{c}{a}$. From the original statement, we know that $\dfrac{b}{a}$ is an integer and $\dfrac{c}{a}$ is a non-integer, meaning the sum of $d=\dfrac{b}{a} + \dfrac{c}{a}$ is a non-integer. If $d$ is a non-integer, then $a\mid (b+c)$ is a false statement. Therefore, if $a\mid b$ and $a\nmid c$, then $a\nmid (b+c)$.
+\end{enumerate}
+
+\problem{1-7}
+\collab{none}
+\clearpage
+\header
+\section*{Carl Frederich Gauss and Computer Science}
+
+References to online resources are provided as footnotes. \\
+
+Carl Frederich Gauss was a German mathematician in the 1800s who is famous for proving the Fundamental Theorem of Algebra and other number theory proofs. According to the Encyclopedia Britannica, Gauss gave "the first account of modular arithmetic." \footnote{\url{https://www.britannica.com/biography/Carl-Friedrich-Gauss}}
+Gauss' modular arithmetic is essential to solving many problems in computer science, even simple ones such as keeping track of time.
+
+\end{document}
+

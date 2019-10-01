@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage{../csci-246-fall2018/hw/template/fasy-hw}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{hyperref}
+
+\author{Nathan Stouffer}
+\problem{1-1}
+% \problem{A-B} means Problem Set A, Problem B.
+\collab{none}
+% or give names, e.g., \collab{Alyssa P. Hacker and A. Student}
+
+\begin{document}
+
+\section*{Section 5.1, Problem 49}
+Transform 
+\begin{center}
+	(1) $\prod\limits_{k=1}^{n} \dfrac{k}{k^2 + 1}$
+\end{center}
+by making $i=k+1$. \\\\
+When $k=1$, $i=2$ and when $k=n$, $i=n+1$. \\
+Rewriting $i=k+1$: $k=i-1$. \\
+Now transforming (1)
+\begin{center}
+	(1) $\prod\limits_{k=1}^{n} \dfrac{k}{k^2 + 1}$ \\
+	$\prod\limits_{k=2}^{n+1} \dfrac{i-1}{(i-1)^2 + 1}$ \\
+	$\prod\limits_{k=2}^{n+1} \dfrac{i-1}{i^2 + 2*i + 1 - 1}$ \\
+	$\prod\limits_{k=2}^{n+1} \dfrac{i-1}{i^2 + 2*i}$
+\end{center}
+
+\problem{1-2}
+\collab{none}
+\clearpage
+\header
+
+\section*{Section 5.2, Problem 16}
+Prove $(1-\dfrac{1}{2^2})(1-\dfrac{1}{3^2})\cdot \cdot \cdot (1-\dfrac{1}{n^2})= \dfrac{n+1}{2n}$ $\forall n \in \mathbb{Z}$ when $n \geq 2$.
+
+\underline{Background} \\
+$(1-\dfrac{1}{2^2})(1-\dfrac{1}{3^2})\cdot \cdot \cdot (1-\dfrac{1}{n^2})= \prod\limits_{k=2}^{n}(1-\dfrac{1}{k^2})$
+
+\begin{proof}
+	We will prove this via mathematical induction. \\
+	Let $A(n)$ be the property $(1-\dfrac{1}{2^2})(1-\dfrac{1}{3^2})\cdot \cdot \cdot (1-\dfrac{1}{k^2})=\dfrac{n+1}{2n}$ or the condensed form: $\prod\limits_{k=2}^{n}(1-\dfrac{1}{n^2})= \dfrac{n+1}{2n}$. \\
+	We will prove this for the base case of $n=2$: 
+	\begin{center}
+		$\prod\limits_{k=2}^{n}(1-\dfrac{1}{k^2}) = \prod\limits_{k=2}^{2}(1-\dfrac{1}{k^2}) = 
+		(1-\dfrac{1}{2^2}) = (1-\dfrac{1}{4}) = \dfrac{3}{4}$ \\
+		$\dfrac{n+1}{2n} = \dfrac{2+1}{2*2} = \dfrac{3}{4}$ \\
+	\end{center}
+	For $n=2$, both $\prod\limits_{k=2}^{n}(1-\dfrac{1}{k^2})$ and $\dfrac{n+1}{2n}$ are $\dfrac{3}{4}$, therefore the base case is true. \\
+	We will now prove $A(n+1)$ to be true by inductively assuming $A(n)$ to be true.
+	\begin{align*}
+		A(n+1) &= \prod\limits_{k=2}^{n+1}(1-\dfrac{1}{k^2}) \\
+		&=(1-\dfrac{1}{(n+1)^2})(\prod\limits_{k=2}^{n}(1-\dfrac{1}{k^2})) \\
+		&=(1-\dfrac{1}{(n+1)^2})(\dfrac{n+1}{2n}) &\text{by inductive assumption} \\
+		&=\dfrac{n+1}{2n} - \dfrac{n+1}{2n*(n+1)^2} &\text{by distributive property} \\
+		&=\dfrac{(n+1)}{2n}*\dfrac{n+1}{n+1} - \dfrac{\cancel{(n+1)}}{2n*(n+1)\cancel{(n+1)}} &\text{find common denominators}\\
+		&=\dfrac{n^2+2*n+\cancel{1-1}}{2n*(n+1)} &\text{cancel like terms}\\
+		&=\dfrac{\cancel{n}*(n+2)}{2\cancel{n}(n+1)} &\text{by distributive property} \\
+		A(n+1)&=\dfrac{((n+1)+1)}{2(n+1)} &\text{that which was to be proved}\\
+	\end{align*}
+	Therefore, by mathematical induction, the property $(1-\dfrac{1}{2^2})(1-\dfrac{1}{3^2})\cdot \cdot \cdot (1-\dfrac{1}{n^2})= \dfrac{n+1}{2n}$ $\forall n \in \mathbb{Z}$ where $n \geq 2$ is true.
+\end{proof}
+
+\problem{1-3}
+\collab{none}
+\clearpage
+\header
+
+\section*{Section 5.3, Problem 7}
+$\forall n\in \mathbb{Z}$, let $P(n)$ be the property $2^n < (n+1)!$
+\begin{enumerate}[a.]
+	\item $P(2)$ is $2^2 < (2+1)! \iff 4 < 3! \iff 4 < 3*2*1 \iff 4 < 6$ which is true
+	\item $P(k)$ is $2^k < (k+1)!$
+	\item $P(k+1)$ is $2^{k+1} < ((k+1) + 1)!$
+	\item To prove $P(k)$ is true $\forall n > 2$, we must show that $P(k+1)$ is true by assuming that $P(k)$ is true.
+\end{enumerate}
+
+\problem{1-4}
+\collab{none}
+\clearpage
+\header
+
+\section*{Section 5.4, Problem 25}
+\begin{enumerate}[a.]
+	\item Let $A_0=\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16\}$ and $A_n$ be the set after n-rounds of elimination. \\
+	$A_1=\{1,3,5,7,9,11,13,15\}$ \\
+	$A_2=\{1,5,9,13\}$ \\
+	$A_3=\{1,9\}$ \\
+	$A_4=\{1\}$ \\
+	The first person is the only remaining person
+	\item Goal: Prove that part a is true for any consecutive set of integers with $2^n$ elements. \\
+	Let $P(x)$ be any consecutive set of integers with $2^n$ elements. If the number of elements is a power of 2, then there must always be an even amount of elements in the set after circling back to the first value until there is only the final element. This means that eliminating alternating elements will never touch the first element because it will always be skipped over.
+	\item Let $P(x)$ be any set with $r=2^n +m$ elements where $m,n\in \mathbb{Z}$ and $2^n < r< 2^{n+1}$. $2m+1$ will be skipped over in every successive cycle until it is the only remaining element. \\
+\end{enumerate}
+
+\problem{1-5}
+\collab{none}
+\clearpage
+\header
+
+\section*{Free Points}
+
+\end{document}
+

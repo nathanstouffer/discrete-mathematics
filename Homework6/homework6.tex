@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{../csci-246-fall2018/hw/template/fasy-hw}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{hyperref}
+
+\author{Nathan Stouffer}
+\problem{1-2}
+% \problem{A-B} means Problem Set A, Problem B.
+\collab{none}
+% or give names, e.g., \collab{Alyssa P. Hacker and A. Student}
+
+\begin{document}
+Prove $A(n)=\sum\limits_{i=0}^n F_i = F_{n+2}-1$. \\\\
+Background: $F_0=F_1=1$ and $F_n=F_{n-1}+F_{n-2}$ $\forall n \geq 2$. \\\\
+\begin{proof}
+	We will prove this by mathematical induction. \\\\
+	Base case for $n=2$: \\
+	$\sum\limits_{i=0}^n F_i =\sum\limits_{i=0}^2 F_i = F_0+F_1+F_2=1+1+2=4$ \\\\
+	$F_{n+2}-1=F_{2+2}-1=F_4-1=(F_3+F_2)-1=((F_2+F_1)+(F_0+F_1))-1=(F_1+2*(F_0+F_1))-1=(1+2*(1+1))-1=(1+2*2)-1=4$ \\\\
+	We will now assume $A(n)$ is true and use this to prove $A(n+1)$: \\
+	\begin{align*}
+		\sum\limits_{i=0}^{n+1}F_i&=F_{n+1}+\sum\limits_{i=0}^{n}F_i \\
+		&=F_{n+1}+(F_{n+2}-1) &\text{by inductive assumption} \\
+		&=(F_{n+1}+F_{n+2})-1 &\text{by associativity} \\
+		&=F_{n+3}-1 &\text{by definition of Fibonacci Sequence} \\
+		A(n+1)&=F_{(n+1)+2}-1
+	\end{align*}
+	Therefore, by inductive assumption, $A(n)$ is proved to be true.
+\end{proof}
+
+\problem{1-3}
+\collab{none}
+\clearpage
+\header
+\section*{Section 5.5, Problem 42}
+Prove $A(n)=\prod\limits_{i=1}^n(c*a_i)=c^n\prod\limits_{i=1}^na_i$.
+\begin{proof}
+	We will prove this by mathematical induction. \\\\
+	Base case for $n=2$: \\
+	$\prod\limits_{i=1}^n(c*a_i)=\prod\limits_{i=1}^2(c*a_i)=(c*a_1)*(c*a_2)=c^2*a_1*a_2=c^2\prod\limits_{i=1}^2a_i$ \\\\
+	We will now assume $A(n)$ is true and use this to prove $A(n+1)$: \\
+	\begin{align*}
+		A(n+1)&=\prod\limits_{i=1}^{n+1}(c*a_i) \\
+		&=(c*a_{n+1})\prod\limits_{i=1}^n(c*a_i) \\
+		&=(c*a_{n+1})(c^n\prod\limits_{i=1}^na_i) &\text{by inductive assumption} \\
+		&=c^{n}*c*a_{n+1}\prod\limits_{i=1}^{n+1}a_i &\text{by associativity} \\
+		A(n+1)&=c^{n+1}\prod\limits_{i=1}^{n+1}a_i
+	\end{align*}
+	Therefore, by inductive assumption, $A(n)$ is proved to be true.
+\end{proof}
+
+\problem{1-4}
+\collab{none}
+\clearpage
+\header
+\section*{Section 5.5, Problem 7}
+$u_k=k*u_{k-1}-u_{k-2}$ $\forall k \geq 3$ \\\\
+$u_1=1$ \\
+$u_2=1$ \\
+$u_3=3*u_{3-1}-u_{3-2}=3*u_2-u_1=3*1-1=2$ \\
+$u_4=4*u_{4-1}-u_{4-2}=4*u_3-u_2=4*2-1=7$
+
+\section*{Section 5.5, Problem 32}
+
+\problem{1-5}
+\collab{none}
+\clearpage
+\header
+\begin{enumerate}[5.1]
+	\item Euler's Formula: $e^{i\theta}=cos(\theta)+i*sin(\theta)$
+	\item Cube: $F_0=6$, $E_0=12$, $V_0=8$ \\
+	Cutting a tetrahedron off each corner: \\
+	The amount of faces increases by the number of vertexes: $F_1=F_0+V_0=6+8=14$ \\
+	The amount of edges increases by 3 times the number of vertexes: $E_1=E_0+3V_0=12+3*8=12+24=36$ \\
+	The amount of vertexes is 3 times the number of vertexes: $V_1=3V_0=3*8=24$
+\end{enumerate}
+
+\problem{1-6}
+\collab{none}
+\clearpage
+\header
+
+\section*{Leonhard Euler}
+
+References to online resources are provided as footnotes. \\
+
+Leonhard Euler was a Swiss mathematician in the 1700s who is famous for discovering many theorems in number theory such as $e^{i\theta} = cos(\theta)+i*sin(\theta)$ and $F-E+V=2$. According to the Encyclopedia Britannica, Euler "threw new light on nearly all parts of pure mathematics. "
+\footnote{\url{https://www.britannica.com/biography/Leonard-Euler}}
+Euler's ideas continue to contribute to modern theorems in mathematics and computing.
+
+\end{document}
+
